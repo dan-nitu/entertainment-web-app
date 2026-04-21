@@ -1,0 +1,110 @@
+@use 'variables' as *;
+
+// TYPOGRAPHY TOKENS
+$typography: (
+  tp-1: (
+    mobile: (
+      20px,
+      300,
+      -0.3px,
+    ),
+    desktop: (
+      32px,
+      300,
+      -0.5px,
+    ),
+  ),
+  tp-2: (
+    mobile: (
+      16px,
+      300,
+      0px,
+    ),
+    desktop: (
+      24px,
+      300,
+      0px,
+    ),
+  ),
+  tp-2-medium: (
+    mobile: (
+      16px,
+      500,
+      0px,
+    ),
+    desktop: (
+      24px,
+      500,
+      0px,
+    ),
+  ),
+  tp-3: (
+    mobile: (
+      15px,
+      500,
+      0px,
+    ),
+    desktop: (
+      18px,
+      500,
+      0px,
+    ),
+  ),
+  tp-4: (
+    mobile: (
+      14px,
+      500,
+      0px,
+    ),
+    desktop: (
+      15px,
+      300,
+      0px,
+    ),
+  ),
+  tp-5: (
+    mobile: (
+      12px,
+      300,
+      0px,
+    ),
+    desktop: (
+      13px,
+      300,
+      0px,
+    ),
+  ),
+  tp-6: (
+    mobile: (
+      11px,
+      300,
+      0px,
+    ),
+    desktop: (
+      11px,
+      300,
+      0px,
+    ),
+  ),
+);
+
+// TYPOGRAPHY MIXIN
+@mixin text($key) {
+  @if map-has-key($typography, $key) == false {
+    @error "Unknown typography key: #{$key}";
+  }
+
+  $mobile: map-get(map-get($typography, $key), mobile);
+  $desktop: map-get(map-get($typography, $key), desktop);
+
+  font-size: nth($mobile, 1);
+  font-weight: nth($mobile, 2);
+  letter-spacing: nth($mobile, 3);
+  line-height: 125%;
+
+  @media (min-width: $breakpoint-tablet) {
+    font-size: nth($desktop, 1);
+    font-weight: nth($desktop, 2);
+    letter-spacing: nth($desktop, 3);
+  }
+}
