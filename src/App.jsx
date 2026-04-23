@@ -1,10 +1,14 @@
 import Navbar from './components/Navbar';
+import SearchInput from './components/SearchInput';
 
 function App() {
   return (
     <>
       <Navbar />
-      <h1>Entertainment web app</h1>
+
+      <div className='container'>
+        <SearchInput />
+      </div>
     </>
   );
 }

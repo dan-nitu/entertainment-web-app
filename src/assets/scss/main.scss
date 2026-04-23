@@ -4,4 +4,5 @@
 @use 'typography' as *;
 @use 'layout' as *;
 
-@import 'components/navbar';
+@use 'components/navbar';
+@use 'components/search-input';

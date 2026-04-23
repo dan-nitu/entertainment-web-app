@@ -1,0 +1,43 @@
+@use '../variables' as *;
+@use '../typography' as *;
+
+.search-input {
+  display: flex;
+  gap: 16px;
+  @media (min-width: $breakpoint-desktop) {
+    gap: 24px;
+  }
+
+  > input {
+    background-color: transparent;
+    border: none;
+    min-width: 215px;
+
+    @include text(tp-2);
+    @media (min-width: $breakpoint-desktop) {
+      @include text(tp-2-medium);
+    }
+
+    &::placeholder {
+      color: $white;
+      opacity: 0.5;
+    }
+
+    &:focus,
+    &:focus-visible {
+      outline: none;
+      border-color: transparent;
+
+      border-bottom: solid 1px $blue-500;
+    }
+  }
+
+  label {
+    cursor: pointer;
+
+    img {
+      height: 24px;
+      aspect-ratio: 1/1;
+    }
+  }
+}
