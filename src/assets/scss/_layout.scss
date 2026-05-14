@@ -36,3 +36,14 @@ html {
     }
   }
 }
+
+.recommended {
+  display: grid;
+  gap: 24px;
+
+  .recommended-movies {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

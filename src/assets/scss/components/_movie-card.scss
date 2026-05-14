@@ -1,6 +1,9 @@
 @use '../typography' as *;
 
 .movie-card {
+  display: grid;
+  gap: 8px;
+
   &.trending {
     min-width: 240px;
     min-height: 140px;
@@ -10,13 +13,21 @@
       position: absolute;
       bottom: 16px;
       left: 16px;
+      @include text(tp-5);
+
+      .metadata {
+        img {
+          height: 12px;
+        }
+      }
     }
   }
 
   > .thumbnail-wrapper {
+    position: relative;
+
     > img {
       border-radius: 8px;
-      position: relative;
     }
 
     .bookmark {
@@ -51,9 +62,14 @@
 
     .metadata {
       display: flex;
+      align-items: center;
       gap: 8px;
-      @include text(tp-4);
+      @include text(tp-6);
       opacity: 0.75;
+
+      img {
+        height: 10px;
+      }
 
       > *:not(:last-child) {
         position: relative;

@@ -11,6 +11,7 @@ function App() {
   const [moviesData, setMoviesData] = useState(DATA);
 
   const trendingMovies = moviesData.filter((movie) => movie.isTrending);
+  const recommendedMovies = moviesData.filter((movie) => !movie.isTrending);
 
   return (
     <>
@@ -24,6 +25,15 @@ function App() {
           <div className='trending-movies'>
             {trendingMovies.map((movie) => (
               <MovieCard key={movie.title} movie={movie} trending={true} />
+            ))}
+          </div>
+        </div>
+
+        <div className='recommended'>
+          <h2>Recommended for you</h2>
+          <div className='recommended-movies'>
+            {recommendedMovies.map((movie) => (
+              <MovieCard key={movie.title} movie={movie} />
             ))}
           </div>
         </div>

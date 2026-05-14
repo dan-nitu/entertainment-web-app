@@ -1,4 +1,5 @@
 import moviesIcon from '../assets/images/icon-category-movie.svg';
+import tvSeriesIcon from '../assets/images/icon-category-tv.svg';
 import bookmarkIcon from '../assets/images/icon-bookmark-empty.svg';
 
 const MovieCard = ({ movie, trending = false }) => {
@@ -34,7 +35,12 @@ const MovieCard = ({ movie, trending = false }) => {
         <div className='metadata'>
           <span>{movie.year}</span>
           <span>
-            <img src={moviesIcon} alt='moviesIcon' /> {movie.category}
+            {movie.category === 'Movie' ? (
+              <img src={moviesIcon} alt='moviesIcon' />
+            ) : (
+              <img src={tvSeriesIcon} alt='tvSeriesIcon' />
+            )}
+            {movie.category}
           </span>
           <span>{movie.rating}</span>
         </div>
