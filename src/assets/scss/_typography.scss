@@ -108,3 +108,10 @@ $typography: (
     letter-spacing: nth($desktop, 3);
   }
 }
+
+h2 {
+  @include text(tp-1);
+}
+h3 {
+  @include text(tp-3);
+}
