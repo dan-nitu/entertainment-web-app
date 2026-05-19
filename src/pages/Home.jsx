@@ -1,11 +1,11 @@
 import SearchInput from '../components/SearchInput';
-
 import MovieCard from '../components/MovieCard';
 
 const Home = ({ trendingMovies, recommendedMovies }) => {
   return (
     <div className='container'>
       <SearchInput />
+
       <div className='trending'>
         <h2>Trending</h2>
         <div className='trending-movies'>
@@ -15,9 +15,9 @@ const Home = ({ trendingMovies, recommendedMovies }) => {
         </div>
       </div>
 
-      <div className='recommended'>
+      <div className='cards-section'>
         <h2>Recommended for you</h2>
-        <div className='recommended-movies'>
+        <div className='cards-list'>
           {recommendedMovies.map((movie) => (
             <MovieCard key={movie.title} movie={movie} />
           ))}
@@ -26,4 +26,5 @@ const Home = ({ trendingMovies, recommendedMovies }) => {
     </div>
   );
 };
+
 export default Home;

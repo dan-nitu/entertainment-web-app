@@ -37,11 +37,11 @@ html {
   }
 }
 
-.recommended {
+.cards-section {
   display: grid;
   gap: 24px;
 
-  .recommended-movies {
+  .cards-list {
     display: grid;
     gap: 16px;
     grid-template-columns: repeat(2, 1fr);

@@ -17,6 +17,9 @@ function App() {
   const trendingMovies = moviesData.filter((movie) => movie.isTrending);
   const recommendedMovies = moviesData.filter((movie) => !movie.isTrending);
 
+  const movies = moviesData.filter((movie) => movie.category === 'Movie');
+  const tvSeries = moviesData.filter((movie) => movie.category === 'TV Series');
+
   return (
     <>
       <Navbar />
@@ -31,8 +34,8 @@ function App() {
             />
           }
         />
-        <Route path='/movies' element={<Movies />} />
-        <Route path='/tv-series' element={<TVSeries />} />
+        <Route path='/movies' element={<Movies movies={movies} />} />
+        <Route path='/tv-series' element={<TVSeries tvSeries={tvSeries} />} />
         <Route path='/bookmarked' element={<Bookmarked />} />
 
         {/* 404 */}

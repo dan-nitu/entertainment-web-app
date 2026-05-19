@@ -1,4 +1,20 @@
-const Movies = () => {
-  return <div>Movies</div>;
+import SearchInput from '../components/SearchInput';
+import MovieCard from '../components/MovieCard';
+
+const Movies = ({ movies }) => {
+  return (
+    <div className='container'>
+      <SearchInput placeholder='Search for movies' />
+
+      <div className='cards-section'>
+        <h2>Movies</h2>
+        <div className='cards-list'>
+          {movies.map((movie) => (
+            <MovieCard key={movie.title} movie={movie} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 };
 export default Movies;
