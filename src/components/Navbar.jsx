@@ -1,3 +1,5 @@
+import { Link } from 'react-router';
+
 import logo from '../assets/images/logo.svg';
 import iconHome from '../assets/images/icon-nav-home.svg';
 import moviesIcon from '../assets/images/icon-nav-movies.svg';
@@ -8,20 +10,33 @@ import userIcon from '../assets/images/image-avatar.png';
 const Navbar = () => {
   return (
     <nav>
-      <img src={logo} className='logo' alt='Logo' />
+      <Link to='/'>
+        <img src={logo} className='logo' alt='Logo' />
+      </Link>
 
       <ul>
         <li>
-          <img src={iconHome} alt='Home' />
+          <Link to='/'>
+            <img src={iconHome} alt='Home' />
+          </Link>
         </li>
+
         <li>
-          <img src={moviesIcon} alt='Movies' />
+          <Link to='/movies'>
+            <img src={moviesIcon} alt='Movies' />
+          </Link>
         </li>
+
         <li>
-          <img src={tvIcon} alt='TV Series' />
+          <Link to='/tv-series'>
+            <img src={tvIcon} alt='TV Series' />
+          </Link>
         </li>
+
         <li>
-          <img src={bookmarkIcon} alt='Bookmark' />
+          <Link to='/bookmarked'>
+            <img src={bookmarkIcon} alt='Bookmark' />
+          </Link>
         </li>
       </ul>
 
@@ -29,4 +44,5 @@ const Navbar = () => {
     </nav>
   );
 };
+
 export default Navbar;
