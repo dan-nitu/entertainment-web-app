@@ -1,7 +1,12 @@
+import { Routes, Route } from 'react-router';
+
+import Home from './pages/Home';
+import Movies from './pages/Movies';
+import TVSeries from './pages/TVSeries';
+import Bookmarked from './pages/Bookmarked';
+
 import Navbar from './components/Navbar';
 import SearchInput from './components/SearchInput';
-
-import MovieCard from './components/MovieCard';
 
 import DATA from './data/data.json';
 
@@ -20,23 +25,23 @@ function App() {
       <div className='container'>
         <SearchInput />
 
-        <div className='trending'>
-          <h2>Trending</h2>
-          <div className='trending-movies'>
-            {trendingMovies.map((movie) => (
-              <MovieCard key={movie.title} movie={movie} trending={true} />
-            ))}
-          </div>
-        </div>
+        <Routes>
+          <Route
+            path='/'
+            element={
+              <Home
+                trendingMovies={trendingMovies}
+                recommendedMovies={recommendedMovies}
+              />
+            }
+          />
+          <Route path='/movies' element={<Movies />} />
+          <Route path='/tv-series' element={<TVSeries />} />
+          <Route path='/bookmarked' element={<Bookmarked />} />
 
-        <div className='recommended'>
-          <h2>Recommended for you</h2>
-          <div className='recommended-movies'>
-            {recommendedMovies.map((movie) => (
-              <MovieCard key={movie.title} movie={movie} />
-            ))}
-          </div>
-        </div>
+          {/* 404 */}
+          <Route path='*' element={<h1>404 Not Found</h1>} />
+        </Routes>
       </div>
     </>
   );
