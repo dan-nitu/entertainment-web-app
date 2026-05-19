@@ -1,3 +1,6 @@
+@use 'sass:map';
+@use 'sass:list';
+
 @use 'variables' as *;
 
 // TYPOGRAPHY TOKENS
@@ -90,22 +93,22 @@ $typography: (
 
 // TYPOGRAPHY MIXIN
 @mixin text($key) {
-  @if map-has-key($typography, $key) == false {
+  @if not map.has-key($typography, $key) {
     @error "Unknown typography key: #{$key}";
   }
 
-  $mobile: map-get(map-get($typography, $key), mobile);
-  $desktop: map-get(map-get($typography, $key), desktop);
+  $mobile: map.get(map.get($typography, $key), mobile);
+  $desktop: map.get(map.get($typography, $key), desktop);
 
-  font-size: nth($mobile, 1);
-  font-weight: nth($mobile, 2);
-  letter-spacing: nth($mobile, 3);
+  font-size: list.nth($mobile, 1);
+  font-weight: list.nth($mobile, 2);
+  letter-spacing: list.nth($mobile, 3);
   line-height: 125%;
 
   @media (min-width: $breakpoint-tablet) {
-    font-size: nth($desktop, 1);
-    font-weight: nth($desktop, 2);
-    letter-spacing: nth($desktop, 3);
+    font-size: list.nth($desktop, 1);
+    font-weight: list.nth($desktop, 2);
+    letter-spacing: list.nth($desktop, 3);
   }
 }
 
