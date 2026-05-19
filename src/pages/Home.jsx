@@ -1,8 +1,11 @@
+import SearchInput from '../components/SearchInput';
+
 import MovieCard from '../components/MovieCard';
 
 const Home = ({ trendingMovies, recommendedMovies }) => {
   return (
-    <>
+    <div className='container'>
+      <SearchInput />
       <div className='trending'>
         <h2>Trending</h2>
         <div className='trending-movies'>
@@ -20,7 +23,7 @@ const Home = ({ trendingMovies, recommendedMovies }) => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default Home;
