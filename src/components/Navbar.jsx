@@ -1,42 +1,56 @@
-import { Link } from 'react-router';
+import { NavLink } from 'react-router';
 
 import logo from '../assets/images/logo.svg';
+
 import iconHome from '../assets/images/icon-nav-home.svg';
 import moviesIcon from '../assets/images/icon-nav-movies.svg';
 import tvIcon from '../assets/images/icon-nav-tv-series.svg';
 import bookmarkIcon from '../assets/images/icon-nav-bookmark.svg';
+
 import userIcon from '../assets/images/image-avatar.png';
 
 const Navbar = () => {
   return (
     <nav>
-      <Link to='/'>
+      <NavLink to='/'>
         <img src={logo} className='logo' alt='Logo' />
-      </Link>
+      </NavLink>
 
       <ul>
         <li>
-          <Link to='/'>
+          <NavLink
+            to='/'
+            className={({ isActive }) => (isActive ? 'active' : '')}
+          >
             <img src={iconHome} alt='Home' />
-          </Link>
+          </NavLink>
         </li>
 
         <li>
-          <Link to='/movies'>
+          <NavLink
+            to='/movies'
+            className={({ isActive }) => (isActive ? 'active' : '')}
+          >
             <img src={moviesIcon} alt='Movies' />
-          </Link>
+          </NavLink>
         </li>
 
         <li>
-          <Link to='/tv-series'>
+          <NavLink
+            to='/tv-series'
+            className={({ isActive }) => (isActive ? 'active' : '')}
+          >
             <img src={tvIcon} alt='TV Series' />
-          </Link>
+          </NavLink>
         </li>
 
         <li>
-          <Link to='/bookmarked'>
+          <NavLink
+            to='/bookmarks'
+            className={({ isActive }) => (isActive ? 'active' : '')}
+          >
             <img src={bookmarkIcon} alt='Bookmark' />
-          </Link>
+          </NavLink>
         </li>
       </ul>
 

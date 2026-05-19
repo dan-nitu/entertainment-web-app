@@ -16,6 +16,14 @@ nav {
     display: flex;
     gap: 24px;
 
+    li {
+      .active {
+        img {
+          filter: brightness(0) invert(1);
+        }
+      }
+    }
+
     img {
       height: 16px;
 
