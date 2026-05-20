@@ -1,9 +1,11 @@
 import moviesIcon from '../assets/images/icon-category-movie.svg';
 import tvSeriesIcon from '../assets/images/icon-category-tv.svg';
 import bookmarkIcon from '../assets/images/icon-bookmark-empty.svg';
+import bookmarkIconFilled from '../assets/images/icon-bookmark-full.svg';
 
 const MovieCard = ({ movie, trending = false }) => {
   let imageSrc;
+  let isBookmarked = false;
 
   if (trending) {
     imageSrc = movie.thumbnail.trending.small;
@@ -22,12 +24,19 @@ const MovieCard = ({ movie, trending = false }) => {
     }
   }
 
+  if (movie.isBookmarked) {
+    isBookmarked = true;
+  }
+
   return (
     <div className={'movie-card' + (trending ? ' trending' : '')}>
       <div className='thumbnail-wrapper'>
         <img src={imageSrc} alt={movie.title} />
         <span className='bookmark'>
-          <img src={bookmarkIcon} alt='bookmarkIcon' />
+          <img
+            src={isBookmarked ? bookmarkIconFilled : bookmarkIcon}
+            alt={isBookmarked ? 'bookmarkIconFilled' : 'bookmarkIcon'}
+          />
         </span>
       </div>
 
