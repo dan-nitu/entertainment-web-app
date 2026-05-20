@@ -1,10 +1,19 @@
 import SearchInput from '../components/SearchInput';
 import MovieCard from '../components/MovieCard';
 
-const Bookmarked = ({ bookmarkedMovies, handleBookmark }) => {
+const Bookmarked = ({
+  bookmarkedMovies,
+  searchTerm,
+  setSearchTerm,
+  handleBookmark,
+}) => {
   return (
     <div className='container'>
-      <SearchInput placeholder='Search for bookmarked shows' />
+      <SearchInput
+        placeholder='Search for bookmarked shows'
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+      />
 
       <div className='cards-section'>
         <h2>Bookmarked Movies</h2>

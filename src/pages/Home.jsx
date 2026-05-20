@@ -1,10 +1,16 @@
 import SearchInput from '../components/SearchInput';
 import MovieCard from '../components/MovieCard';
 
-const Home = ({ trendingMovies, recommendedMovies, handleBookmark }) => {
+const Home = ({
+  trendingMovies,
+  recommendedMovies,
+  searchTerm,
+  setSearchTerm,
+  handleBookmark,
+}) => {
   return (
     <div className='container'>
-      <SearchInput />
+      <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
       <div className='trending'>
         <h2>Trending</h2>

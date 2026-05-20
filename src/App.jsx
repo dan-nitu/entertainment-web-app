@@ -13,6 +13,7 @@ import { useState } from 'react';
 
 function App() {
   const [moviesData, setMoviesData] = useState(DATA);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const trendingMovies = moviesData.filter((movie) => movie.isTrending);
   const recommendedMovies = moviesData.filter((movie) => !movie.isTrending);
@@ -21,6 +22,24 @@ function App() {
   const tvSeries = moviesData.filter((movie) => movie.category === 'TV Series');
 
   const bookmarkedMovies = moviesData.filter((movie) => movie.isBookmarked);
+
+  const filteredTrending = trendingMovies.filter((movie) =>
+    movie.title.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
+  const filteredRecommended = recommendedMovies.filter((movie) =>
+    movie.title.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
+
+  const filteredMovies = movies.filter((movie) =>
+    movie.title.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
+  const filteredTVSeries = tvSeries.filter((movie) =>
+    movie.title.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
+
+  const filteredBookmarked = bookmarkedMovies.filter((movie) =>
+    movie.title.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
 
   const handleBookmark = (title) => {
     setMoviesData((prevData) =>
@@ -41,27 +60,43 @@ function App() {
           path='/'
           element={
             <Home
-              trendingMovies={trendingMovies}
-              recommendedMovies={recommendedMovies}
+              trendingMovies={filteredTrending}
+              recommendedMovies={filteredRecommended}
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
               handleBookmark={handleBookmark}
             />
           }
         />
         <Route
           path='/movies'
-          element={<Movies movies={movies} handleBookmark={handleBookmark} />}
+          element={
+            <Movies
+              movies={filteredMovies}
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+              handleBookmark={handleBookmark}
+            />
+          }
         />
         <Route
           path='/tv-series'
           element={
-            <TVSeries tvSeries={tvSeries} handleBookmark={handleBookmark} />
+            <TVSeries
+              tvSeries={filteredTVSeries}
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+              handleBookmark={handleBookmark}
+            />
           }
         />
         <Route
           path='/bookmarked'
           element={
             <Bookmarked
-              bookmarkedMovies={bookmarkedMovies}
+              bookmarkedMovies={filteredBookmarked}
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
               handleBookmark={handleBookmark}
             />
           }

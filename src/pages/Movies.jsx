@@ -1,10 +1,14 @@
 import SearchInput from '../components/SearchInput';
 import MovieCard from '../components/MovieCard';
 
-const Movies = ({ movies, handleBookmark }) => {
+const Movies = ({ movies, searchTerm, setSearchTerm, handleBookmark }) => {
   return (
     <div className='container'>
-      <SearchInput placeholder='Search for movies' />
+      <SearchInput
+        placeholder='Search for movies'
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+      />
 
       <div className='cards-section'>
         <h2>Movies</h2>
