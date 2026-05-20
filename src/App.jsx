@@ -20,6 +20,8 @@ function App() {
   const movies = moviesData.filter((movie) => movie.category === 'Movie');
   const tvSeries = moviesData.filter((movie) => movie.category === 'TV Series');
 
+  const bookmarkedMovies = moviesData.filter((movie) => movie.isBookmarked);
+
   return (
     <>
       <Navbar />
@@ -36,7 +38,10 @@ function App() {
         />
         <Route path='/movies' element={<Movies movies={movies} />} />
         <Route path='/tv-series' element={<TVSeries tvSeries={tvSeries} />} />
-        <Route path='/bookmarked' element={<Bookmarked />} />
+        <Route
+          path='/bookmarked'
+          element={<Bookmarked bookmarkedMovies={bookmarkedMovies} />}
+        />
 
         {/* 404 */}
         <Route path='*' element={<h1>404 Not Found</h1>} />

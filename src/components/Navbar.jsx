@@ -46,7 +46,7 @@ const Navbar = () => {
 
         <li>
           <NavLink
-            to='/bookmarks'
+            to='/bookmarked'
             className={({ isActive }) => (isActive ? 'active' : '')}
           >
             <img src={bookmarkIcon} alt='Bookmark' />
