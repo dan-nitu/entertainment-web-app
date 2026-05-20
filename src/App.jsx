@@ -22,6 +22,16 @@ function App() {
 
   const bookmarkedMovies = moviesData.filter((movie) => movie.isBookmarked);
 
+  const handleBookmark = (title) => {
+    setMoviesData((prevData) =>
+      prevData.map((movie) =>
+        movie.title === title
+          ? { ...movie, isBookmarked: !movie.isBookmarked }
+          : movie,
+      ),
+    );
+  };
+
   return (
     <>
       <Navbar />
@@ -33,14 +43,28 @@ function App() {
             <Home
               trendingMovies={trendingMovies}
               recommendedMovies={recommendedMovies}
+              handleBookmark={handleBookmark}
             />
           }
         />
-        <Route path='/movies' element={<Movies movies={movies} />} />
-        <Route path='/tv-series' element={<TVSeries tvSeries={tvSeries} />} />
+        <Route
+          path='/movies'
+          element={<Movies movies={movies} handleBookmark={handleBookmark} />}
+        />
+        <Route
+          path='/tv-series'
+          element={
+            <TVSeries tvSeries={tvSeries} handleBookmark={handleBookmark} />
+          }
+        />
         <Route
           path='/bookmarked'
-          element={<Bookmarked bookmarkedMovies={bookmarkedMovies} />}
+          element={
+            <Bookmarked
+              bookmarkedMovies={bookmarkedMovies}
+              handleBookmark={handleBookmark}
+            />
+          }
         />
 
         {/* 404 */}

@@ -3,7 +3,7 @@ import tvSeriesIcon from '../assets/images/icon-category-tv.svg';
 import bookmarkIcon from '../assets/images/icon-bookmark-empty.svg';
 import bookmarkIconFilled from '../assets/images/icon-bookmark-full.svg';
 
-const MovieCard = ({ movie, trending = false }) => {
+const MovieCard = ({ movie, trending = false, handleBookmark }) => {
   let imageSrc;
   let isBookmarked = false;
 
@@ -32,7 +32,7 @@ const MovieCard = ({ movie, trending = false }) => {
     <div className={'movie-card' + (trending ? ' trending' : '')}>
       <div className='thumbnail-wrapper'>
         <img src={imageSrc} alt={movie.title} />
-        <span className='bookmark'>
+        <span className='bookmark' onClick={() => handleBookmark(movie.title)}>
           <img
             src={isBookmarked ? bookmarkIconFilled : bookmarkIcon}
             alt={isBookmarked ? 'bookmarkIconFilled' : 'bookmarkIcon'}
